@@ -1,0 +1,19 @@
+---
+title: "Leaflet"
+author: "Johan Jordaan"
+date: "25/11/2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r }
+library("leaflet")
+myMap <- leaflet() %>% 
+  addTiles() %>%
+  addMarkers(lat=39.2980803,lng=-76.5898801,popup="Jef's Office")
+myMap
+```
+
