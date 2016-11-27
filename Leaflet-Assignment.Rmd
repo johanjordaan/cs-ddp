@@ -6,14 +6,42 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+library("leaflet")
+library("data.table")
 ```
 
 ```{r }
-library("leaflet")
-myMap <- leaflet() %>% 
-  addTiles() %>%
-  addMarkers(lat=39.2980803,lng=-76.5898801,popup="Jef's Office")
-myMap
-```
+capitals <- fread("./capital.csv")
+states <- fread("./states.csv")
 
+setkey(states,name)
+
+d <- fread("./ABS_REGIONAL_ASGS_25112016143109128.csv",stringsAsFactors = TRUE)
+names(d)[1] <- "MEASURE"
+
+median_income <- d[which(d$MEASURE == "INCOME_2"& d$REGIONTYPE == "STE"),]
+setkey(median_income,Region)
+
+median_income <- median_income[states]
+median_income$label <- paste(as.character(floor(median_income$Value/1000)),"K")
+
+myMap <- median_income %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(
+    lng=~lng,lat=~lat,
+    radius = ~Value/2500,
+    stroke = FALSE, fillOpacity = 0.5,
+  ) %>%
+  addPopups(~lng, ~lat, ~label, 
+    options = popupOptions(
+      minWidth = 0, 
+      closeOnClick = FALSE, 
+      closeButton =FALSE)
+    )
+
+myMap
+
+```
