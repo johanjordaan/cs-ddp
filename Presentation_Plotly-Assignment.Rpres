@@ -1,0 +1,31 @@
+R Markdown Presentation & Plotly Assignment 
+========================================================
+author: Johan Jordaan
+date: 2016/11/28
+autosize: true
+transition: concave
+
+Agenda
+========================================================
+
+
+- Show an R Markdown Presentation 
+- Show the use of Plotly in the Presentation
+
+Plotly
+========================================================
+```{r, echo=FALSE}
+library(plotly)
+set.seed(100)
+d <- diamonds[sample(nrow(diamonds), 1000), ]
+p<-plot_ly(d, x = ~carat, y = ~price, color = ~carat,
+        size = ~carat, text = ~paste("Clarity: ", clarity))
+htmlwidgets::saveWidget(as.widget(p), file = "demo.html")
+```
+<iframe src="demo.html" style="position:absolute;height:100%;width:100%"></iframe>
+
+
+Thanks
+========================================================
+
+Any questions?
