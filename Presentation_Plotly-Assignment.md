@@ -15,7 +15,7 @@ Agenda
 Plotly
 ========================================================
 
-<iframe src="demo.html" style="position:absolute;height:100%;width:100%"></iframe>
+<iframe src="plot.html" style="position:absolute;height:100%;width:100%"></iframe>
 
 
 Thanks

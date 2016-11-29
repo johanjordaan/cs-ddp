@@ -20,9 +20,9 @@ set.seed(100)
 d <- diamonds[sample(nrow(diamonds), 1000), ]
 p<-plot_ly(d, x = ~carat, y = ~price, color = ~carat,
         size = ~carat, text = ~paste("Clarity: ", clarity))
-htmlwidgets::saveWidget(as.widget(p), file = "demo.html")
+htmlwidgets::saveWidget(as.widget(p), file = "plot.html")
 ```
-<iframe src="demo.html" style="position:absolute;height:100%;width:100%"></iframe>
+<iframe src="plot.html" style="position:absolute;height:100%;width:100%"></iframe>
 
 
 Thanks
