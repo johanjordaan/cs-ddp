@@ -1,7 +1,7 @@
 library(shiny)
 library(leaflet)
 
-shinyUI(fluidPage(
+shinyUI(fluidPage(theme = "theme.css",
   
   titlePanel("Is this mushroom poisonous?"),
   
@@ -32,17 +32,10 @@ shinyUI(fluidPage(
     
     mainPanel(
       tabsetPanel(
-        tabPanel("Prediction", 
-          tags$div(id="prediction",style="color:red;", textOutput("prediction"))
+        tabPanel("Prediction",
+              htmlOutput("prediction")
         ),
-        tags$script(HTML("
-          alert($('#prediction').val());  
-          var target = $('#prediction')[0];
-          target.addEventListener('change', function() {
-            alert($('#prediction').val());  
-          });"
-        )),
-        tabPanel("Model Paremeters", leafletOutput("map")),
+        tabPanel("Model Paremeters", tableOutput("Model")),
         tabPanel("Help", tableOutput("Help"))
       )
     )

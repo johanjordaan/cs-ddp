@@ -1,0 +1,17 @@
+.prediction {
+  margin: 30px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  line-height: 200px;
+  height: 200px;
+  text-align: center;  
+  vertical-align: middle;
+}
+
+.poisonous {
+  background-color: #F2D7D5;
+}
+
+.edible {
+  background-color: #D4EFDF;
+}

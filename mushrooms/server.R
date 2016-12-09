@@ -12,15 +12,10 @@ shinyServer(function(input, output) {
     input$population;
     input$habitat;
     if(input$spore_print_color == "Black") {
-      return("Poisonous")
+      return("<div class='prediction poisonous'>Poisonous</div>")
     } else {
-      return("Edible")
+      return("<div class='prediction edible'>Edible</div>")
     }
   }) 
   
-  output$map <- renderLeaflet({
-    myMap <- leaflet() %>% addTiles()
-    myMap
-  })
-    
 })
