@@ -1,3 +1,33 @@
+/* #7D1935 Maroon 
+   #4A96AD Blue
+   #F5F3EE Wheet
+   #FFFFFF White
+*/
+
+body {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  background-color: #F5F3EE !important;
+  color: #7D1935;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+  background-color: #F5F3EE;
+}
+
+.well {
+  background-color: #4A96AD;
+}
+
+h2 {
+  text-align: right;
+  padding-right: 100px;
+}
+
+.warning {
+  color: red;
+}
 .prediction {
   margin: 30px;
   border-radius: 10px;

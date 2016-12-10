@@ -17,5 +17,4 @@ shinyServer(function(input, output) {
       return("<div class='prediction edible'>Edible</div>")
     }
   }) 
-  
 })

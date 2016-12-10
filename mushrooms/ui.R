@@ -32,11 +32,13 @@ shinyUI(fluidPage(theme = "theme.css",
     
     mainPanel(
       tabsetPanel(
-        tabPanel("Prediction",
-              htmlOutput("prediction")
+        tabPanel("Prediction", 
+                 htmlOutput("prediction"),  
+                 helpText(class="warning",
+                          "*** Note: This prediction does not constiture advice on wheter you should eat mushroom or not. It is done as part of an assignment and is for illustrative purposes ONLY. ***")
         ),
-        tabPanel("Model Paremeters", tableOutput("Model")),
-        tabPanel("Help", tableOutput("Help"))
+        tabPanel("Model Paremeters", htmlOutput("Model")),
+        tabPanel("Help", includeHTML("./help.html"))
       )
     )
   )
