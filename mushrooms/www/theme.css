@@ -21,8 +21,13 @@ body {
 }
 
 h2 {
+  border-radius: 10px;
   text-align: right;
   padding-right: 100px;
+  padding-top: 50px;
+  height: 200px;
+  color: #F5F3EE;
+  background-image: url("https://kaggle2.blob.core.windows.net/datasets-images/478/974/557711140aeab7ca242d1e903c4e058e/dataset-cover.jpg");
 }
 
 .warning {

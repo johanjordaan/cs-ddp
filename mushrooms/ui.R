@@ -7,10 +7,6 @@ shinyUI(fluidPage(theme = "theme.css",
   
   sidebarLayout(
     sidebarPanel(
-       helpText("Note: while the data view will show only",
-               "the specified number of observations, the",
-               "summary will be based on the full dataset."),
-      
        #spore-print-color:black=k,brown=n,buff=b,chocolate=h,green=r,orange=o,purple=u,white=w,yellow=y
        selectInput("spore_print_color","Spore Print Color",c("Black","Brown","Chocolate","Green","Orange","Purple","White","Yellow")),
 
