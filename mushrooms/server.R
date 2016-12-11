@@ -1,9 +1,16 @@
 library(shiny)
 library(leaflet)
 library(data.table)
+library(caret)
 
 shinyServer(function(input, output) {
 
+  model <- readRDS("./model.rds")  
+  
+  output$model <- renderPlot({
+    plot(model)
+  })
+    
   output$prediction <- renderText({
     input$spore_print_color;
     input$gill_color;
