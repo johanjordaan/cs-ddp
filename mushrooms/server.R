@@ -38,23 +38,42 @@ shinyServer(function(input, output) {
   )
 
   output$prediction <- renderText({
-    spore_print_color = spore_print_color_lookup[spore_print_color_lookup$key == input$spore_print_color,]$value
-    gill_color = gill_color_lookup[gill_color_lookup$key == input$gill_color,]$value
-    gill_size = gill_size_lookup[gill_size_lookup$key == input$gill_size,]$value
-    stalk_root = stalk_root_lookup[stalk_root_lookup$key == input$stalk_root,]$value
-    population = population_lookup[population_lookup$key == input$population,]$value
-    habitat = habitat_lookup[habitat_lookup$key == input$habitat,]$value
+    spore_print_color = as.character(spore_print_color_lookup[spore_print_color_lookup$key == input$spore_print_color,]$value)
+    gill_color = as.character(gill_color_lookup[gill_color_lookup$key == input$gill_color,]$value)
+    gill_size = as.character(gill_size_lookup[gill_size_lookup$key == input$gill_size,]$value)
+    stalk_root = as.character(stalk_root_lookup[stalk_root_lookup$key == input$stalk_root,]$value)
+    population = as.character(population_lookup[population_lookup$key == input$population,]$value)
+    habitat = as.character(habitat_lookup[habitat_lookup$key == input$habitat,]$value)
+    
+    
     
     d <- data.frame(
-      spore_print_color = as.factor(c(spore_print_color,spore_print_color)),
-      gill_color = as.factor(c(gill_color,gill_color)),
-      gill_size = as.factor(c(gill_size,gill_size)),
-      stalk_root = as.factor(c(stalk_root,stalk_root)),
-      population = as.factor(c(population,population)),
-      habitat = as.factor(c(habitat,habitat))
+      spore_print_color = factor(
+        c(spore_print_color,spore_print_color),
+        levels = levels(spore_print_color_lookup$value)
+      ),
+      gill_color = factor(
+        c(gill_color,gill_color),
+        levels = levels(gill_color_lookup$value)
+      ),
+      gill_size = factor(
+        c(gill_size,gill_size),
+        levels = levels(gill_size_lookup$value)
+      ),
+      stalk_root = factor(
+        c(stalk_root,stalk_root),        
+        levels = levels(stalk_root_lookup$value)
+      ),
+      population = factor(
+        c(population,population),
+        levels = levels(population_lookup$value)
+      ),
+      habitat = factor(
+        c(habitat,habitat),
+        levels = levels(habitat_lookup$value)
+      )
     );
-    
-    prediction = predict(model,d)[0];
+    prediction = predict(model,d)[0]
     
     signature <- paste0(spore_print_color,gill_color,gill_size,stalk_root,population,habitat,prediction)
     if(input$spore_print_color == "Black") {
