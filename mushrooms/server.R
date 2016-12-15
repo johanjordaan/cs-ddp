@@ -29,7 +29,7 @@ shinyServer(function(input, output) {
   
   stalk_root_lookup = data.frame(
     key  = c("Bulbous","Club","Cup","Equal","Rhizomorphs","Rooted","Missing"),
-    value = c("b","c","u","e","z","r","?")
+    value = c("b","c","?","e","?","r","?")
   )
 
   population_lookup = data.frame(
@@ -70,6 +70,8 @@ shinyServer(function(input, output) {
       return(paste0("<div class='prediction edible'>Edible</div>",signature))
     }
   })
+  
+  
   
   output$model <- renderPlot({
     plot(model)

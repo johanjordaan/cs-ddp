@@ -8,8 +8,8 @@ names(mushrooms) <- gsub("-","_",names(mushrooms))
 mushrooms$`veil_type` <- NULL
 
 tc <- trainControl(method = "repeatedcv", 
-                   number = 2 ,
-                   repeats = 1, 
+                   number = 5 ,
+                   repeats = 2, 
                    #summaryFunction = twoClassSummary, 
                    #classProbs = TRUE,
                    verboseIter = TRUE)

@@ -23,7 +23,10 @@ shinyUI(fluidPage(theme = "theme.css",
                  helpText(class="warning",
                           "*** Note: This prediction does not constiture advice on wheter you should eat mushroom or not. It is done as part of an assignment and is for illustrative purposes ONLY. ***")
         ),
-        tabPanel("Model Paremeters", plotOutput("model")),
+        tabPanel("Model Paremeters", 
+                 includeHTML("./about.html"),  
+                 plotOutput("model")
+        ),
         tabPanel("Help", includeHTML("./help.html"))
       )
     )
