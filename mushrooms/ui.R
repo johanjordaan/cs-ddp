@@ -7,9 +7,10 @@ shinyUI(fluidPage(theme = "theme.css",
   
   sidebarLayout(
     sidebarPanel(
-       selectInput("spore_print_color","Spore Print Color",c("Black","Brown","Chocolate","Green","Orange","Purple","White","Yellow")),
+       selectInput("cap_shape","Cap Shape",c("Bell","Conical","Convex","Flat","Knobbed","Sunken")),
+       selectInput("cap_color","Cap Color",c("Brown","Buff","Cinnamon","Gray","Green","Pink","Purple","Red","White","Yellow")),
        selectInput("gill_color","Gill Color",c("Black","Brown","Buff","Chocolate","Gray","Green","Orange","Pink","Purple","Red","White","Yellow")),
-       selectInput("gill_size","Gill Size",c("Broad","Narrow")),
+       selectInput("stalk_shape","Stalk Shape",c("Enlarged","Tapering")),
        selectInput("stalk_root","Stalk Root",c("Bulbous","Club","Cup","Equal","Rhizomorphs","Rooted","Missing")),
        selectInput("population","Populationt",c("Abundant","Clustered","Numerous","Scattered","Several","Solitary")),
        selectInput("habitat","Habitat",c("Grasses","Leaves","Meadows","Paths","Urban","Waste","Woods"))

@@ -7,9 +7,14 @@ shinyServer(function(input, output) {
 
   model <- readRDS("./model.rds")  
   
-  spore_print_color_lookup = data.frame(
-    key  = c("Black","Brown","Buff","Chocolate","Green","Orange","Purple","White","Yellow"),
-    value = c("k","n","b","h","r","o","u","w","y")
+  cap_shape_lookup = data.frame(
+    key  = c("Bell","Conical","Convex","Flat","Knobbed","Sunken"),
+    value = c("b","c","x","f","k","s")
+  )
+  
+  cap_color_lookup = data.frame(
+    key  = c("Brown","Buff","Cinnamon","Gray","Green","Pink","Purple","Red","White","Yellow"),
+    value = c("n","b","c","g","r","p","u","e","w","y")
   )
 
   gill_color_lookup = data.frame(
@@ -17,9 +22,9 @@ shinyServer(function(input, output) {
     value = c("k","n","b","h","g","r","o","p","u","r","w","y")
   )
   
-  gill_size_lookup = data.frame(
-    key  = c("Broad","Narrow"),
-    value = c("b","n")
+  stalk_shape_lookup = data.frame(
+    key  = c("Enlarged","Tapering"),
+    value = c("e","t")
   )
   
   stalk_root_lookup = data.frame(
@@ -38,45 +43,28 @@ shinyServer(function(input, output) {
   )
 
   output$prediction <- renderText({
-    spore_print_color = as.character(spore_print_color_lookup[spore_print_color_lookup$key == input$spore_print_color,]$value)
+    
+    cap_shape = as.character(cap_shape_lookup[cap_shape_lookup$key == input$cap_shape,]$value)
+    cap_color = as.character(cap_color_lookup[cap_color_lookup$key == input$cap_color,]$value)
     gill_color = as.character(gill_color_lookup[gill_color_lookup$key == input$gill_color,]$value)
-    gill_size = as.character(gill_size_lookup[gill_size_lookup$key == input$gill_size,]$value)
+    stalk_shape = as.character(stalk_shape_lookup[stalk_shape_lookup$key == input$stalk_shape,]$value)
     stalk_root = as.character(stalk_root_lookup[stalk_root_lookup$key == input$stalk_root,]$value)
     population = as.character(population_lookup[population_lookup$key == input$population,]$value)
     habitat = as.character(habitat_lookup[habitat_lookup$key == input$habitat,]$value)
     
-    
-    
     d <- data.frame(
-      spore_print_color = factor(
-        c(spore_print_color,spore_print_color),
-        levels = levels(spore_print_color_lookup$value)
-      ),
-      gill_color = factor(
-        c(gill_color,gill_color),
-        levels = levels(gill_color_lookup$value)
-      ),
-      gill_size = factor(
-        c(gill_size,gill_size),
-        levels = levels(gill_size_lookup$value)
-      ),
-      stalk_root = factor(
-        c(stalk_root,stalk_root),        
-        levels = levels(stalk_root_lookup$value)
-      ),
-      population = factor(
-        c(population,population),
-        levels = levels(population_lookup$value)
-      ),
-      habitat = factor(
-        c(habitat,habitat),
-        levels = levels(habitat_lookup$value)
-      )
+      cap_shape = cap_shape,
+      cap_color = cap_color,
+      gill_color = gill_color,
+      stalk_shape = stalk_shape,
+      stalk_root = stalk_root,
+      population = population,
+      habitat = habitat
     );
-    prediction = predict(model,d)[0]
+    prediction = predict(model,d)
     
-    signature <- paste0(spore_print_color,gill_color,gill_size,stalk_root,population,habitat,prediction)
-    if(input$spore_print_color == "Black") {
+    signature <- paste0(cap_shape,cap_color,gill_color,stalk_shape,stalk_root,population,habitat,prediction)
+    if(prediction == "p") {
       return(paste0("<div class='prediction poisonous'>Poisonous</div>",signature))
     } else {
       return(paste0("<div class='prediction edible'>Edible</div>",signature))

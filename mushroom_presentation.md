@@ -29,21 +29,21 @@ The model
 ========================================================
 
 - Random Forest Decision Tree
-- 5 Features
+- 7 Features (Visual Features)
 - Model Performance
 
 
 ```
-Cross-Validated (5 fold, repeated 5 times) Confusion Matrix 
+Cross-Validated (2 fold, repeated 1 times) Confusion Matrix 
 
 (entries are percentual average cell counts across resamples)
  
           Reference
 Prediction    e    p
-         e 51.4  0.4
-         p  0.4 47.8
-                            
- Accuracy (average) : 0.9913
+         e 51.7  0.2
+         p  0.1 48.0
+                           
+ Accuracy (average) : 0.997
 ```
 
 The product - Now and the Future
