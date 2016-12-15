@@ -16,6 +16,8 @@ img {
 }
 
 table, th, td {
+  width:700px;
+  padding: 5px;
   border: 1px solid lightgray;
 }
 
