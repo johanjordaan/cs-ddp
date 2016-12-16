@@ -2,6 +2,7 @@ library(shiny)
 library(leaflet)
 library(data.table)
 library(caret)
+library(randomForest)
 
 shinyServer(function(input, output) {
 
