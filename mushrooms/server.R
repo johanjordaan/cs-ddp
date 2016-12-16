@@ -65,13 +65,11 @@ shinyServer(function(input, output) {
     
     signature <- paste0(cap_shape,cap_color,gill_color,stalk_shape,stalk_root,population,habitat,prediction)
     if(prediction == "p") {
-      return(paste0("<div class='prediction poisonous'>Poisonous</div>",signature))
+      return("<div class='prediction poisonous'>Poisonous</div>")
     } else {
-      return(paste0("<div class='prediction edible'>Edible</div>",signature))
+      return("<div class='prediction edible'>Edible</div>")
     }
   })
-  
-  
   
   output$model <- renderPlot({
     plot(model)

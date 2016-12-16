@@ -34,16 +34,16 @@ The model
 
 
 ```
-Cross-Validated (2 fold, repeated 1 times) Confusion Matrix 
+Cross-Validated (5 fold, repeated 2 times) Confusion Matrix 
 
 (entries are percentual average cell counts across resamples)
  
           Reference
 Prediction    e    p
-         e 51.7  0.2
-         p  0.1 48.0
-                           
- Accuracy (average) : 0.997
+         e 51.6  0.0
+         p  0.2 48.2
+                            
+ Accuracy (average) : 0.9982
 ```
 
 The product - Now and the Future
